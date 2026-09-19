@@ -1,0 +1,613 @@
+MDScreenManager:
+    
+    MDScreen:
+        name : "practice_screen"
+        md_bg_color : (0.06, 0.09, 0.16, 1)
+        
+        
+        MDBottomAppBar:
+            size_hint_y : None
+            type : "bottom"
+            height : "40dp"
+            md_bg_color: (0.12,0.12,0.14,1)
+            
+        MDIconButton:
+            icon : "home"
+            pos_hint :{"center_y":0.03 , "center_x":0.2}
+            on_release : 
+                app.root.current = "practice_screen"
+                app.nav_home()
+            
+        MDIconButton:
+            icon : "book"
+            pos_hint :{"center_y":0.03 , "center_x":0.8}
+            on_release : 
+                app.root.current = "Dashboard"
+                app.graph()
+                app.nav_dash()
+            
+    
+        
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: "20dp"
+            spacing: "20dp"
+            
+            
+                
+            
+            MDGridLayout : 
+                cols : 2
+                rows : 1
+                
+            
+                MDLabel:
+                    id : subtitle
+                    text : ""
+                    halign: "center"
+                    theme_text_color : 'Custom'
+                    text_color: (1, 1, 1, 1)
+                    pos_hint : {"top" : 0.5}
+                    font_size: 30
+                    
+                MDLabel:
+                    id : count
+                    text : ""
+                    halign: "right"
+                    theme_text_color : 'Custom'
+                    pos_hint : {"top" : 0.9}
+                    text_color: (0.97, 0.98, 0.99, 1)
+                    font_size: 30
+
+            MDLabel:
+                id : question
+                text: ""
+                halign: "center"
+                theme_text_color : 'Custom'
+                text_color: (1, 1, 1, 1)
+                font_style: "H6"
+                
+            MDLabel:
+                id : subscript
+                text: ""
+                halign: "center"
+                theme_text_color : 'Custom'
+                text_color: (0.97, 0.98, 0.99, 1)
+                font_size: 20
+
+            MDTextField:
+                id: answer_field
+                hint_text: "Answering Field..."
+                mode: "rectangle"
+                radius : [20,20,20,20]
+                text_color_normal: 1,1,1,1
+                text_color_focus: 1,1,1,1
+
+                hint_text_color_normal: 0.6,0.6,0.6,1
+                hint_text_color_focus: 0.2,0.6,1,1
+
+                line_color_normal: 0.5,0.5,0.5,1
+                line_color_focus: 0.2,0.6,1,1
+                multiline: True
+                size_hint_x : 0.7
+                pos_hint : {"center_x":.5}
+                size_hint_y: None
+                height: "200dp"
+
+            MDLabel:
+                id: status_label
+                theme_text_color : 'Custom'
+                text: "Ready to record"
+                halign: "center"
+                text_color: (0.97, 0.98, 0.99, 1)
+                
+            MDFloatLayout:
+                
+
+                MDFloatingActionButton:
+                    id: mic_btn
+                    icon: "microphone"
+                    md_bg_color: (0.23, 0.51, 0.96, 1)
+                    text_color: (1, 1, 1, 1)
+                    pos_hint: {"center_x": .43 , "top":1 , "center_y" : 0.9}
+                    on_release: app.toggle_mic()
+                    
+                MDFloatingActionButton:
+                    id: send_btn
+                    icon: "send"
+                    text_color: (1, 1, 1, 1)
+                    md_bg_color: (0.23, 0.51, 0.96, 1)
+                    pos_hint: {"center_x": .55 , "top":1, "center_y" : 0.9}
+                    on_release: app.python_basic_que()
+                    
+    MDScreen:
+        name : "ScoreScreen"
+        md_bg_color : (0.06, 0.09, 0.16, 1)
+        MDBottomAppBar:
+            size_hint_y : None
+            type : "bottom"
+            height : "40dp"
+            md_bg_color: 0.1, 0.1, 0.15, 1 
+            icon_color : (1,1,1,1)
+            
+        MDLabel:
+            id : result
+            text: "Result"
+            halign: "center"
+            theme_text_color : 'Custom'
+            text_color: (1, 1, 1, 1)
+            font_style: "H6"
+        MDFloatLayout:
+            
+            MultiDonutChart:
+                id: chart
+                size_hint: None,None
+                size: "260dp","260dp"
+                pos_hint: {"center_x":0.50,"center_y":0.58}
+
+        MDBoxLayout:
+            orientation: "vertical"
+            spacing: "20dp"
+            size_hint_y: None
+            height: "80dp"
+            pos_hint: {"center_x":0.5,"center_y":0.25}
+            
+            MDBoxLayout:
+                orientation: "horizontal"
+                spacing: "20dp"
+                size_hint_y: None
+                height: "80dp"
+                pos_hint: {"center_x":0.5,"center_y":0.25}
+            
+                MDLabel :
+                    id : basic_per
+                    text : "basic result"
+                    halign: "center"
+                    theme_text_color : 'Custom'
+                    text_color: (1, 1, 1, 1)
+                    pos_hint : {"center_y" : -0.4 , "center_x":0.5}
+                    font_size: 20
+                    
+                MDLabel :
+                    id : program_per
+                    text : "program result"
+                    halign: "center"
+                    theme_text_color : 'Custom'
+                    text_color: (1, 1, 1, 1)
+                    pos_hint : {"center_y" : -0.4 , "center_x":0.5}
+                    font_size: 20
+                    
+                MDLabel :
+                    id : hr_per
+                    text : "HR result"
+                    halign: "center"
+                    theme_text_color : 'Custom'
+                    text_color: (1, 1, 1, 1)
+                    pos_hint : {"center_y" : -0.4 , "center_x":0.5}
+                    font_size: 20
+                
+                
+            
+            MDBoxLayout:
+                orientation: "horizontal"
+                spacing: "20dp"
+                size_hint_y: None
+                height: "80dp"
+                pos_hint: {"center_x":0.5,"center_y":0.25} 
+                
+                MDLabel :
+                    text : "basic result (Blue loop)"
+                    halign: "center"
+                    theme_text_color : 'Custom'
+                    text_color: (1, 1, 1, 1)
+                    pos_hint : {"center_y" : 0.45 , "center_x":0.5}
+                    font_size: 20 
+                    
+                
+                          
+                
+                    
+                MDLabel :
+                    text : "program result (Green loop)"
+                    halign: "center"
+                    theme_text_color : 'Custom'
+                    text_color: (1, 1, 1, 1)
+                    pos_hint : {"center_y" : 0.45 , "center_x":0.5}
+                    font_size: 20
+                    
+                MDLabel :
+                    text : "Average Result (Orange loop)"
+                    halign: "center"
+                    theme_text_color : 'Custom'
+                    text_color: (1, 1, 1, 1)
+                    pos_hint : {"center_y" : 0.45 , "center_x":0.5}
+                    font_size: 20
+                    
+                
+        MDIconButton:
+            icon : "home"
+            pos_hint :{"center_y":0.03 , "center_x":0.2}
+            on_release : 
+                app.root.current = "practice_screen"
+                app.nav_home()
+            
+        MDIconButton:
+            icon : "book"
+            pos_hint :{"center_y":0.03 , "center_x":0.8}
+            on_release : 
+                app.root.current = "Dashboard"
+                app.nav_dash()
+    
+    
+
+
+    MDScreen:
+        name : "programScreen"
+        transition : "right"
+        md_bg_color : (0.06, 0.09, 0.16, 1)
+        MDBottomAppBar:
+            size_hint_y : None
+            type : "bottom"
+            height : "40dp"
+            md_bg_color: 0.1, 0.1, 0.15, 1 
+            left_action_items: [["home", lambda x: app.home()]]
+            right_action_items: [["cog", lambda x: app.settings()]]
+            icon_color : (1,1,1,1)
+            
+                
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: "20dp"
+            spacing: "20dp"
+            
+            
+                
+            
+        MDFloatLayout:      
+            
+            MDLabel:
+                id : p_subtitle
+                text : "Program Questions"
+                halign: "center"
+                theme_text_color : 'Custom'
+                text_color: (1, 1, 1, 1)
+                pos_hint : {"center_y" : 0.9 , "center_x":0.5}
+                font_size: 30
+                    
+            MDLabel:
+                id : p_count
+                text : "count"
+                theme_text_color : 'Custom'
+                pos_hint : {"top" : 1.4 , "center_x":1.4}
+                text_color: (0.97, 0.98, 0.99, 1)
+                font_size: 30
+                    
+            
+            Image:
+                id : question_img
+                source: "loop_que.png"
+                size_hint: None, None
+                size: "400dp", "400dp"
+                pos_hint: {"center_x": .5, "center_y": .73}
+                
+            
+            MDLabel:
+                id : p_subscript
+                text: "subscript"
+                halign: "center"
+                theme_text_color : 'Custom'
+                pos_hint : {"top" : 0.99 , "center_x": .5}
+                text_color: (0.97, 0.98, 0.99, 1)
+                font_size: 18
+                
+                
+                    
+            MDRaisedButton:
+                pos_hint : {"top" : 0.40 , "center_x":0.25}
+                md_bg_color: (0.12, 0.15, 0.25, 1)
+                line_color: (0.23, 0.51, 0.96, 1)
+                text_color: (1,1,1,1)
+                id : option1
+                text : ""
+                font_size : 30
+                    
+            MDRaisedButton:
+                pos_hint : {"top" : 0.40 , "center_x":0.75}
+                id : option2
+                md_bg_color: (0.12, 0.15, 0.25, 1)
+                line_color: (0.23, 0.51, 0.96, 1)
+                text_color: (1,1,1,1)
+                text : ""
+                font_size : 30
+                    
+            MDRaisedButton:
+                pos_hint : {"top" : 0.23 , "center_x":0.25}
+                id : option3
+                md_bg_color: (0.12, 0.15, 0.25, 1)
+                line_color: (0.23, 0.51, 0.96, 1)
+                text_color: (1,1,1,1)
+                text : ""
+                font_size : 30
+            
+                        
+            MDRaisedButton:
+                pos_hint : {"top" : 0.23 , "center_x":0.75}
+                id : option4
+                md_bg_color: (0.12, 0.15, 0.25, 1)
+                line_color: (0.23, 0.51, 0.96, 1)
+                text_color: (1,1,1,1)
+                text : ""
+                font_size : 30
+                
+                
+            MDRaisedButton:
+                pos_hint : {"top" : 0.14 , "center_x":0.90}
+                id : next
+                md_bg_color: (0.12, 0.15, 0.25, 1)
+                line_color: (0.23, 0.51, 0.96, 1)
+                text_color: (1,1,1,1)
+                text : "next"
+                font_size : 20
+                
+                    
+
+                
+                      
+            
+    MDScreen:
+        name : "Dashboard"
+        transition : "right"
+        md_bg_color : (0.06, 0.09, 0.16, 1)
+        MDBottomAppBar:
+            size_hint_y : None
+            type : "bottom"
+            height : "40dp"
+            md_bg_color: 0.1, 0.1, 0.15, 1 
+            left_action_items: [["home", lambda x: app.home()]]
+            right_action_items: [["cog", lambda x: app.settings()]]
+            icon_color : (1,1,1,1)
+            
+        MDBoxLayout:
+            orientation: "horizontal"
+            spacing: "20dp"
+            size_hint_y: None
+            height: "80dp"
+            pos_hint: {"center_x":0.5,"center_y":0.25}
+            
+        MDIconButton:
+            icon : "home"
+            pos_hint :{"center_y":0.03 , "center_x":0.2}
+            on_release : 
+                app.root.current = "practice_screen"
+                app.nav_home()
+            
+        MDIconButton:
+            icon : "book"
+            pos_hint :{"center_y":0.03 , "center_x":0.8}
+            on_release : 
+                app.root.current = "Dashboard"
+                app.nav_dash()
+                
+        MDFloatLayout:
+            MDLabel:
+                text: "Weekly Progress"
+                halign: "center"
+                font_style: "H5"
+                bold: True
+                theme_text_color: "Custom"
+                text_color: (0.4, 0.75, 1, 1)
+                pos_hint: {"center_x": 0.5, "center_y": 0.95}
+                
+            MDCard:
+                md_bg_color : (1,1,1,0.25)
+                size_hint : (0.6,0.5)
+                pos_hint : {"top":.85,"center_x":0.5}
+                spacing : 24
+                padding_right : 20
+                
+                MDCard:
+                    md_bg_color : (1,1,0,0.5)
+                    size_hint_x : None
+                    size_hint_y : 1
+                    width : "30dp"
+                    spacing : 20
+                    padding_right : 20
+                    
+                    
+                    
+                    MDGridLayout:
+                        cols : 1
+                        rows : 6
+                        
+                    
+                        MDLabel:
+                            text : "100%"
+                            halign : "center"
+                            font_size : 15
+                            pos_hint_y : 1
+                            pos_hint_x : 0.5
+                            
+                        MDLabel:
+                            text : "80%"
+                            halign : "center"
+                            font_size : 15
+                            pos_hint_y : 1
+                            pos_hint_x : 0.5
+                            
+                        MDLabel:
+                            text : "60%"
+                            halign : "center"
+                            font_size : 15
+                            
+                        MDLabel:
+                            text : "40%"
+                            halign : "center"
+                            font_size : 15
+                            pos_hint_y : 0.5
+                            pos_hint_x : 0.5
+                            
+                        MDLabel:
+                            text : "20%"
+                            halign : "center"
+                            font_size : 15
+                            spacing : 90
+                            pos_hint_y : -1
+                            pos_hint_x : 0.5
+                            
+                        MDLabel:
+                            text : ""
+                    
+                
+                
+                MDCard:
+                    md_bg_color : 0.2, 0.8, 1, 1
+                    size_hint_x : None
+                    id : bar1
+                    width : "40dp"
+                    radius : [5,5,0,0]
+                    size_hint_y : 0.02
+                    
+                    MDGridLayout:
+                        cols : 1
+                        rows : 2
+                        MDLabel:
+                            text : "MON"
+                            halign : "center"
+                            
+                        MDLabel : 
+                            id : date1
+                            text : ""
+                            halign : "center"
+                            pos_hint_y : 0.05
+               
+                    
+                MDCard:
+                    md_bg_color : 0.2, 0.8, 1, 1
+                    size_hint_x : None
+                    id : bar2
+                    width : "40dp"
+                    radius : [5,5,0,0]
+                    size_hint_y : 0.02
+                    
+                    
+                    MDGridLayout:
+                        cols : 1
+                        rows : 2
+                        MDLabel:
+                            text : "Tue"
+                            halign : "center"
+                            
+                        MDLabel : 
+                            id : date2
+                            text : ""
+                            halign : "center"
+                            pos_hint_y : 0.05
+                    
+                MDCard:
+                    md_bg_color :0.2, 0.8, 1, 1
+                    size_hint_x : None
+                    id : bar3
+                    width : "40dp"
+                    radius : [5,5,0,0]
+                    size_hint_y : 0.02
+                    
+                    MDGridLayout:
+                        cols : 1
+                        rows : 2
+                        MDLabel:
+                            text : "WED"
+                            halign : "center"
+                            
+                        MDLabel : 
+                            id : date3
+                            text : ""
+                            halign : "center"
+                            pos_hint_y : 0.05
+                    
+                MDCard:
+                    md_bg_color : 0.2, 0.8, 1, 1
+                    size_hint_x : None
+                    id : bar4
+                    width : "40dp"
+                    radius : [5,5,0,0]
+                    size_hint_y : 0.02
+                    
+                    
+                    MDGridLayout:
+                        cols : 1
+                        rows : 2
+                        MDLabel:
+                            text : "THU"
+                            halign : "center"
+                            
+                        MDLabel : 
+                            id : date4
+                            text : ""
+                            halign : "center"
+                            pos_hint_y : 0.05
+                    
+                MDCard:
+                    md_bg_color : 0.2, 0.8, 1, 1
+                    size_hint_x : None
+                    id : bar5
+                    width : "40dp"
+                    radius : [5,5,0,0]
+                    size_hint_y : 0.02
+                    
+                    
+                    MDGridLayout:
+                        cols : 1
+                        rows : 2
+                        MDLabel:
+                            text : "FRI"
+                            halign : "center"
+                            
+                        MDLabel : 
+                            id : date5
+                            text : ""
+                            halign : "center"
+                            pos_hint_y : 0.05
+                    
+                MDCard:
+                    md_bg_color : 0.2, 0.8, 1, 1
+                    size_hint_x : None
+                    id : bar6
+                    width : "40dp"
+                    radius : [5,5,0,0]
+                    size_hint_y : 0.02
+                    
+                    
+                    MDGridLayout:
+                        cols : 1
+                        rows : 2
+                        MDLabel:
+                            text : "SAT"
+                            halign : "center"
+                            
+                        MDLabel : 
+                            id : date6
+                            text : ""
+                            halign : "center"
+                            pos_hint_y : 0.05
+                    
+                MDCard:
+                    md_bg_color : 0.2, 0.8, 1, 1
+                    size_hint_x : None
+                    id : bar7
+                    width : "40dp"
+                    radius : [5,5,0,0]
+                    size_hint_y : 0.02
+                    
+                    MDGridLayout:
+                        cols : 1
+                        rows : 2
+                        MDLabel:
+                            text : "SUN"
+                            halign : "center"
+                            
+                        MDLabel : 
+                            id : date7
+                            text : ""
+                            halign : "center"
+                            pos_hint_y : 0.05
+                
